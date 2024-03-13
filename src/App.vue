@@ -8,6 +8,6 @@
 //:is 态显示需要的组件
 const layout = 'layout_default'
 //打印当前环境
-//console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV)
 </script>
 
