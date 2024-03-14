@@ -16,6 +16,7 @@ import service from '@/views/service.vue'
 import contact from '@/views/contact.vue'
 import not_found from '@/views/404.vue'
 import maintenance from '@/views/maintenance.vue'
+import test from '@/views/test.vue'
 
 // 定义路由，每个路由都需要映射到一个组件
 const routes = [
@@ -124,6 +125,14 @@ const routes = [
             layout: 'layout_custom'
         },
         component: maintenance,
+    },
+    {
+        path: '/test',
+        name: 'test',
+        meta: {
+            layout: 'layout_default'
+        },
+        component: test,
     },
 ]
 

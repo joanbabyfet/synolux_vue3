@@ -1,5 +1,5 @@
 <template>
-    <div id="top"><router-link to="/"><img class="topLogo" src="/images/spacer.gif" alt="logo" name="idxTopLogo" width="205" height="30" border="0" /></router-link>
+    <div id="top"><router-link to="/"><img class="topLogo" src="@/assets/images/spacer.gif" alt="logo" name="idxTopLogo" width="205" height="30" border="0" /></router-link>
         <div class="nav"><router-link to="/">{{ $t('backHome') }}</router-link><span class="side">&nbsp;</span><router-link to="" @click="setLang('en')">English</router-link><span class="side">&nbsp;</span><router-link to="" @click="setLang('zh')">中文</router-link></div>
     </div>
     <div id="HeaderNavIdx">

@@ -11,11 +11,18 @@
   "dependencies": {
     "axios": "^1.6.7",
     "core-js": "^3.6.5",
+    "echarts": "^5.5.0",
     "element-plus": "^2.6.1",
+    "js-md5": "^0.8.3",
+    "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
+    "qrcode.vue": "^3.4.1",
     "vue": "^3.0.0",
     "vue-i18n": "9",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "xgplayer": "^3.0.14",
+    "xgplayer-flv": "^3.0.14",
+    "xgplayer-hls": "^3.0.14"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",

@@ -1,6 +1,7 @@
 //这里为入口文件
 import { createApp } from 'vue'
 import App from './App.vue'
+//引入路由文件
 import router from './router'
 //引入css公共样式
 import './assets/css/style.css' 
