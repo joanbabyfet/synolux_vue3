@@ -9,6 +9,9 @@
         <!-- <div id="echart">
         </div> -->
         <qrcode-vue :value="payUrl" :size="200" level="H" />
+        <Icon></Icon>
+        <!-- <component :is="Icon" /> -->
+        <div class="content"></div>
     </div>
 </template>
 
@@ -20,6 +23,8 @@ import * as echarts from "echarts"
 import { ref, onMounted } from "vue"
 //导入二维码组件
 import QrcodeVue from 'qrcode.vue'
+//引入svg组件
+import Icon from '../components/Icon.vue'
 
 const payUrl = ref('')
 payUrl.value = 'https://www.google.com.tw/'
@@ -58,7 +63,8 @@ function init() {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+@import '../assets/css/test.less';
 /* 这里要设置长宽, 否则显示不出来 */
 #echart {
   width: 50vw;
