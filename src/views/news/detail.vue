@@ -24,7 +24,8 @@ import useNewsDetail from '@/composables/useNewsDetail'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const { info } = useNewsDetail({
-    params: `{"id": ${route.params.id}}`
-})
+let data = {
+    'id': route.params.id,
+}
+const { info } = useNewsDetail(data)
 </script>

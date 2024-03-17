@@ -13,8 +13,13 @@ import i18n from './lang/index'
 //引入element plus组件
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+//引入全局方法
+import { goUrl, sliceWord } from './utils/common'
 
 const app = createApp(App)
+//定义全局变量
+app.config.globalProperties.$goUrl = goUrl
+app.config.globalProperties.$sliceWord = sliceWord
 app.use(i18n)
 app.use(ElementPlus)
 app.component('layout_home', layout_home) //首页布局

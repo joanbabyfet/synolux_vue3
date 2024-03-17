@@ -7,11 +7,21 @@
     </div>
     <div class="newsList">
         <ul>
-            <li v-for="item in news" :key="item.id">
+            <li v-for="item in list" :key="item.id">
                 <router-link :to="`/news/${item.id}`">{{ item.name }}</router-link>
             </li>
         </ul>
         <!-- <p>目前無最新訊息...</p> -->
+        <el-pagination
+            v-model:current-page="currentPage"
+            v-model:page-size="pageSize"
+            :total="total"
+            :page-sizes="[10, 20, 30, 40]"
+            layout="total, sizes, prev, pager, next, jumper"
+            @current-change="handleCurrentChange"
+            @size-change="handleSizeChange"
+            >
+        </el-pagination>
     </div>
     
 </template>
@@ -19,7 +29,5 @@
 <script setup>
 import useNews from '@/composables/useNews'
 
-const { news } = useNews({
-    params: `{"page":1,"page_size":10}`
-})
+const { list, total, currentPage, pageSize, handleCurrentChange, handleSizeChange } = useNews()
 </script>
