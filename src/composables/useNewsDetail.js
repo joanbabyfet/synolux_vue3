@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue'
-import { getNewsDetail } from '../api/news'
+import { getNewsDetail } from '../api/index'
 import { useRoute } from 'vue-router'
 
 //获取新闻详情

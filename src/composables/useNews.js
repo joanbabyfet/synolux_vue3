@@ -1,5 +1,6 @@
 import { ref, onMounted } from 'vue'
-import { getNews } from '../api/news'
+import { getNews } from '../api/index'
+import { ElMessage } from 'element-plus'
 
 //获取新闻列表
 export default function useNews() {
@@ -18,6 +19,10 @@ export default function useNews() {
             if(res.data.code == 0) {
                 list.value = res.data.data.list
                 total.value = res.data.data.count
+                ElMessage.success(res.data.msg)
+            }
+            else {
+                ElMessage.error(res.data.msg)
             }
         }).catch(error => {
             console.log(error)

@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue'
-import { getNews } from '../api/news'
+import { getNews } from '../api/index'
 
 //获取首页新闻列表
 export default function useHomeNews() {
