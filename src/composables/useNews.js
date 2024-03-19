@@ -8,7 +8,7 @@ export default function useNews() {
     const currentPage = ref(1) //第几页
     const pageSize = ref(10) //每页显示几条
 
-    async function getData() {
+    async function getList() {
         let data = {
             'page': currentPage.value,
             'page_size': pageSize.value,
@@ -25,19 +25,19 @@ export default function useNews() {
     }
 
     onMounted(() => {
-        getData()
+        getList()
     })
 
     const handleCurrentChange = (val) => {
         console.log(`current page: ${val}`)
         currentPage.value = val
-        getData()
+        getList()
     }
 
     const handleSizeChange = (val) => {
         console.log(`${val} items per page`)
         pageSize.value = val
-        getData()
+        getList()
     }
 
     return {

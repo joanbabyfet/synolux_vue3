@@ -7,9 +7,9 @@ export default function useNewsDetail() {
     const info = ref({})
     const route = useRoute()
 
-    async function getData() {
+    async function getDetail(id) {
         let data = {
-            'id': route.params.id,
+            'id': id,
         }
         await getNewsDetail({ params: JSON.stringify(data) }).then((res) => {
             console.log(res.data)
@@ -22,7 +22,7 @@ export default function useNewsDetail() {
     }
 
     onMounted(() => {
-        getData()
+        getDetail(route.params.id)
     })
     
     return {

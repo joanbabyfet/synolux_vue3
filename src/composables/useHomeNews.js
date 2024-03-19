@@ -5,7 +5,7 @@ import { getNews } from '../api/news'
 export default function useHomeNews() {
     const list = ref([])
 
-    async function getData() {
+    async function getList() {
         let data = {
             'page': 1,
             'page_size': 3,
@@ -21,7 +21,7 @@ export default function useHomeNews() {
     }
 
     onMounted(() => {
-        getData()
+        getList()
     })
 
     return {
