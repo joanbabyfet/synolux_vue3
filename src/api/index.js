@@ -7,7 +7,7 @@ export const getNews = (params) => axios('/v1/example/index', {
     params: params,
 })
 //获取新闻详情
-export const getNewsDetail = (params) => axios('/v1/example/show', {
+export const getNewsInfo = (params) => axios('/v1/example/show', {
     method: 'GET',
     params: params,
 })

@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import useNewsDetail from '@/composables/useNewsDetail'
+import useNewsInfo from '@/composables/useNewsInfo'
 
-const { info } = useNewsDetail()
+const { info } = useNewsInfo()
 </script>

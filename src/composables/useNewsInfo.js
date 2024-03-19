@@ -1,17 +1,17 @@
 import { ref, onMounted } from 'vue'
-import { getNewsDetail } from '../api/index'
+import { getNewsInfo } from '../api/index'
 import { useRoute } from 'vue-router'
 
 //获取新闻详情
-export default function useNewsDetail() {
+export default function useNewsInfo() {
     const info = ref({})
     const route = useRoute()
 
-    async function getDetail(id) {
+    async function getInfo(id) {
         let data = {
             'id': id,
         }
-        await getNewsDetail({ params: JSON.stringify(data) }).then((res) => {
+        await getNewsInfo({ params: JSON.stringify(data) }).then((res) => {
             console.log(res.data)
             if(res.data.code == 0) {
                 info.value = res.data.data
@@ -22,7 +22,7 @@ export default function useNewsDetail() {
     }
 
     onMounted(() => {
-        getDetail(route.params.id)
+        getInfo(route.params.id)
     })
     
     return {
