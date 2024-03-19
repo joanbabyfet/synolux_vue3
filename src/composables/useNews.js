@@ -2,18 +2,18 @@ import { ref, onMounted } from 'vue'
 import { getNews } from '../api/news'
 
 //获取新闻列表
-export default function useNews(data) {
+export default function useNews() {
     const list = ref([]) 
     const total = ref(0) //总条数
     const currentPage = ref(1) //第几页
     const pageSize = ref(10) //每页显示几条
 
     async function getData() {
-        let params = data ? data : {
+        let data = {
             'page': currentPage.value,
             'page_size': pageSize.value,
         }
-        await getNews({ params: JSON.stringify(params) }).then((res) => {
+        await getNews({ params: JSON.stringify(data) }).then((res) => {
             console.log(res.data)
             if(res.data.code == 0) {
                 list.value = res.data.data.list
