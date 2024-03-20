@@ -15,17 +15,14 @@ export default function useNews() {
             'page_size': pageSize.value,
         }
         await getNews({ params: JSON.stringify(data) }).then((res) => {
-            console.log(res.data)
-            if(res.data.code == 0) {
+            //console.log(res.data)
+            if(res.data.code === 0) {
                 list.value = res.data.data.list
                 total.value = res.data.data.count
-                ElMessage.success(res.data.msg)
-            }
-            else {
-                ElMessage.error(res.data.msg)
             }
         }).catch(error => {
-            console.log(error)
+            //console.log(error)
+            ElMessage.error(error)
         })
     }
 
