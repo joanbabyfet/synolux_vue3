@@ -15,10 +15,10 @@ export default function useNews() {
             'page_size': pageSize.value,
         }
         await getNews({ params: JSON.stringify(data) }).then((res) => {
-            //console.log(res.data)
-            if(res.data.code === 0) {
-                list.value = res.data.data.list
-                total.value = res.data.data.count
+            //console.log(res)
+            if(res.code === 0) {
+                list.value = res.data.list
+                total.value = res.data.count
             }
         }).catch(error => {
             //console.log(error)

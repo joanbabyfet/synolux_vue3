@@ -10,7 +10,8 @@ const i18n = createI18n({
   messages: {
     'zh': zh,
     'en': en
-  }
+  },
+  warnHtmlMessage: false, //关闭 Detected HTML in xxx 警告
 })
 
 export default i18n
