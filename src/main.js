@@ -15,13 +15,20 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 //引入全局方法
 import { goUrl, sliceWord } from './utils/common'
+//引入pinia
+import { createPinia } from 'pinia'
+//引入pinia数据持久化(保存local storage)
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const app = createApp(App)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 //定义全局变量
 app.config.globalProperties.$goUrl = goUrl
 app.config.globalProperties.$sliceWord = sliceWord
 app.use(i18n)
 app.use(ElementPlus)
+app.use(pinia)
 app.component('layout_home', layout_home) //首页布局
 app.component('layout_default', layout_default) //内页布局
 app.use(router)

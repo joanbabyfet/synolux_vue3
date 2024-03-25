@@ -11,7 +11,7 @@ export default function useNewsInfo() {
         let data = {
             'id': id,
         }
-        await getNewsInfo({ params: JSON.stringify(data) }).then((res) => {
+        await getNewsInfo(data).then((res) => {
             //console.log(res)
             if(res.code === 0) {
                 info.value = res.data

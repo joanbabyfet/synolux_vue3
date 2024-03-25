@@ -3,13 +3,13 @@ import axios from 'axios'
 
 //创建实例
 const instance = axios.create({
-    baseURL: process.env.VUE_APP_BASE_URL,
+    baseURL: process.env.VUE_APP_BASE_API,
     timeout: 15000, //15秒
 })
 //请求拦截器
 instance.interceptors.request.use(
     config => {
-        //config.headers['Authorization'] = 'Bearer ' + Cookies.get( 'access_token')
+        config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('access_token')
         return config
     },
     error => {

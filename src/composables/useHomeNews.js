@@ -10,10 +10,10 @@ export default function useHomeNews() {
             'page': 1,
             'page_size': 3,
         }
-        await getNews({ params: JSON.stringify(data) }).then((res) => {
+        await getNews(data).then((res) => {
             //console.log(res)
             if(res.code === 0) {
-                list.value = res.data.list
+                list.value = res.data.lists
             }
         }).catch(error => {
             console.log(error)

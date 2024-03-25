@@ -3,10 +3,20 @@ import request from '../utils/request'
 
 //获取新闻列表
 export const getNews = (params) => {
-    return request.get('/v1/example/index', {params: params})
+    return request.get('/example', {params: params})
 }
 
 //获取新闻详情
 export const getNewsInfo = (params) => {
-    return request.get('/v1/example/show', {params: params})
+    return request.get('/example/detail', {params: params})
+}
+
+//登录
+export const login = (params) => {
+    return request.post('/login', params)
+}
+
+//登录
+export const getCaptcha = (params) => {
+    return request.get('/get_captcha', {params: params})
 }
