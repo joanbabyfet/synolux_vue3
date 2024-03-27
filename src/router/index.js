@@ -168,7 +168,7 @@ const routes = [
 
 // 创建路由实例并传递 `routes` 配置
 const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHistory(),
     routes,
 })
 
