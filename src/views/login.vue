@@ -11,10 +11,10 @@
               <el-input v-model="form.username" placeholder="Enter Username"></el-input>
             </el-form-item>
             <el-form-item label="Password" prop="password">
-              <el-input v-model="form.password" placeholder="Enter Password"></el-input>
+              <el-input type="password" v-model="form.password" placeholder="Enter Password"></el-input>
             </el-form-item>
             <el-form-item label="Captcha" prop="captcha">
-              <el-input v-model="form.captcha" placeholder="Enter Captcha"></el-input>
+              <el-input v-model="form.captcha" placeholder="Enter Captcha" maxlength="4"></el-input>
               <el-image :src="captchaImageUrl" @click="onChangeCaptcha"></el-image>
             </el-form-item>
             <el-form-item>

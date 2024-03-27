@@ -4,6 +4,8 @@
 ## Feature
 
 * 使用 axios http请求库 与 element-plus 组件库
+* 实现登录验证码功能
+* 通过 pinia 实现用户信息持久缓存
 * 使用 i18n 实现多语言切换
 * 支持多环境开发配置 .env/.env.test/.env.prod
 

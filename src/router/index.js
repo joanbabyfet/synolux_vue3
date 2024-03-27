@@ -18,6 +18,9 @@ import not_found from '@/views/404.vue'
 import maintenance from '@/views/maintenance.vue'
 import test from '@/views/test.vue'
 import login from '@/views/login.vue'
+import edit_pwd from '@/views/edit_pwd.vue'
+import profile from '@/views/profile.vue'
+import useUserStore from '../store/user'
 
 // 定义路由，每个路由都需要映射到一个组件
 const routes = [
@@ -143,6 +146,24 @@ const routes = [
         },
         component: login,
     },
+    {
+        path: '/edit_pwd',
+        name: 'edit_pwd',
+        meta: {
+            layout: 'layout_default',
+            requireAuth: true
+        },
+        component: edit_pwd,
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        meta: {
+            layout: 'layout_default',
+            requireAuth: true
+        },
+        component: profile,
+    },
 ]
 
 // 创建路由实例并传递 `routes` 配置
@@ -156,11 +177,31 @@ NProgress.configure({
     showSpinner: true //右上角显示转旋图标
 })
 
-//路由守卫
-router.beforeEach((to) => {
+//全局路由前置守卫
+router.beforeEach((to, from, next) => {
     NProgress.start() // start progress bar
     if(to.meta.title) {
         document.title = to.meta.title
+    }
+
+    //检测权限
+    const userStore = useUserStore()
+    const token = userStore.token
+    if (to.meta.requireAuth) {
+        if(token) {
+            next()
+        }
+        else {
+            next({ name: 'login' })
+        }
+    }
+    else {
+        if (to.path == '/login' && token) {
+            next({ name: 'profile' })
+        }
+        else {     
+            next()
+        }
     }
 })
 

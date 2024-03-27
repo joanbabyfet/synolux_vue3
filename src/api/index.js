@@ -16,7 +16,12 @@ export const login = (params) => {
     return request.post('/login', params)
 }
 
-//登录
+//获取验证码
 export const getCaptcha = (params) => {
     return request.get('/get_captcha', {params: params})
+}
+
+//修改密码
+export const editPwd = (params) => {
+    return request.post('/edit_pwd', params)
 }
