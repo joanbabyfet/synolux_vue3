@@ -17,7 +17,7 @@ export default function useNews() {
         await getNews(data).then((res) => {
             //console.log(res)
             if(res.code === 0) {
-                list.value = res.data.lists
+                list.value = res.data.list
                 total.value = res.data.total
             }
         }).catch(error => {

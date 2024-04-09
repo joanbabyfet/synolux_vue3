@@ -7,13 +7,13 @@ export default function useHomeNews() {
 
     async function getList() {
         let data = {
-            'page': 1,
-            'page_size': 3,
+            'is_hot': 1,
+            'limit': 3,
         }
         await getNews(data).then((res) => {
             //console.log(res)
             if(res.code === 0) {
-                list.value = res.data.lists
+                list.value = res.data.list
             }
         }).catch(error => {
             console.log(error)

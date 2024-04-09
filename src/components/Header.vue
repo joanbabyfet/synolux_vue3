@@ -3,14 +3,14 @@
         <div class="nav" v-show="JSON.stringify(userStore.userInfo) === '{}'">
             <router-link to="/login">登录</router-link><span class="side">&nbsp;</span>
             <router-link to="" @click="setLang('en')">English</router-link><span class="side">&nbsp;</span>
-            <router-link to="" @click="setLang('zh')">中文</router-link>
+            <router-link to="" @click="setLang('cn')">中文</router-link>
         </div>
         <div class="nav" v-show="JSON.stringify(userStore.userInfo) !== '{}'">
             <router-link to="/profile">Hi {{ userStore.userInfo.username }}</router-link><span class="side">&nbsp;</span>
             <router-link to="/edit_pwd">修改密码</router-link><span class="side">&nbsp;</span>
             <router-link to="" @click="logout()">退出</router-link><span class="side">&nbsp;</span>
             <router-link to="" @click="setLang('en')">English</router-link><span class="side">&nbsp;</span>
-            <router-link to="" @click="setLang('zh')">中文</router-link>
+            <router-link to="" @click="setLang('cn')">中文</router-link>
         </div>
     </div>
     <div id="HeaderNavIdx">
