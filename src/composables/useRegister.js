@@ -1,16 +1,19 @@
 import { onMounted, ref } from 'vue'
-import { login, getCaptcha } from '../api/index'
+import { register, getCaptcha } from '../api/index'
 import { ElMessage } from 'element-plus'
-import useUserStore from '../store/user'
 import router from '../router'
 
 export default function() {
     //定义表单绑定的ref
-    const loginForm = ref(null)
+    const registerForm = ref(null)
     //定义初始化数据
     const form = ref({
         username: '',
         password: '',
+        realname: '',
+        email: '',
+        phone_code: '',
+        phone: '',
         captcha: '',
         key: '',
     })
@@ -23,35 +26,42 @@ export default function() {
             { required: true, message: 'Enter Password', trigger: ['blur']},
             { min: 6, max: 30, message: '长度在6-20个字符', trigger: ['blur']}
         ],
+        realname: [
+            { required: true, message: 'Enter Real Name', trigger: ['blur']}
+        ],
+        email: [
+            { required: true, message: 'Enter Email', trigger: ['blur']}
+        ],
+        phone_code: [
+            { required: true, message: 'Enter Phone Code', trigger: ['blur']}
+        ],
+        phone: [
+            { required: true, message: 'Enter Phone', trigger: ['blur']}
+        ],
         captcha: [{ required: true, message: 'Enter Captcha', trigger: ['blur']}],
     }
     const isDisabled = ref(false) //禁用按钮避免重复提交
     const captchaImageUrl = ref('')
-    const userStore = useUserStore()
 
     const submitForm = () => {
         isDisabled.value = true
-        loginForm.value.validate(async (valid) => {
+        registerForm.value.validate(async (valid) => {
             if(valid) {
                 //发送请求
                 const headers = {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
-                login(form.value, headers).then(res => {
+                register(form.value, headers).then(res => {
                     isDisabled.value = false
                     if(res.code === 0) {
-                        //保存token与用户信息
-                        //localStorage.setItem('access_token', res.data.access_token)
-                        userStore.setToken(res.data.access_token)
-                        userStore.setUserInfo(res.data)
                         //提示信息
                         ElMessage.success(res.msg)
                         //重置表单
-                        loginForm.value.resetFields()
+                        registerForm.value.resetFields()
                         //重刷验证码
                         onChangeCaptcha()
-                        //跳转到会员中心
-                        router.push('/profile') 
+                        //跳转到登录页
+                        router.push('/login') 
                     }
                     else {
                         ElMessage.error(res.msg)
@@ -86,7 +96,7 @@ export default function() {
     }
 
     return {
-        loginForm,
+        registerForm,
         form,
         submitForm,
         rules,

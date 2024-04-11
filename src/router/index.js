@@ -18,6 +18,7 @@ import not_found from '@/views/404.vue'
 import maintenance from '@/views/maintenance.vue'
 import test from '@/views/test.vue'
 import login from '@/views/login.vue'
+import register from '@/views/register.vue'
 import edit_pwd from '@/views/edit_pwd.vue'
 import profile from '@/views/profile.vue'
 import useUserStore from '../store/user'
@@ -145,6 +146,14 @@ const routes = [
             layout: 'layout_default'
         },
         component: login,
+    },
+    {
+        path: '/register',
+        name: 'register',
+        meta: {
+            layout: 'layout_default'
+        },
+        component: register,
     },
     {
         path: '/edit_pwd',

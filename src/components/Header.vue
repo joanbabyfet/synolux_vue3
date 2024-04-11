@@ -2,6 +2,7 @@
     <div id="top"><router-link to="/"><img class="topLogo" src="@/assets/images/spacer.gif" alt="logo" name="idxTopLogo" width="205" height="30" border="0" /></router-link>
         <div class="nav" v-show="JSON.stringify(userStore.userInfo) === '{}'">
             <router-link to="/login">登录</router-link><span class="side">&nbsp;</span>
+            <router-link to="/register">注册</router-link><span class="side">&nbsp;</span>
             <router-link to="" @click="setLang('en')">English</router-link><span class="side">&nbsp;</span>
             <router-link to="" @click="setLang('cn')">中文</router-link>
         </div>

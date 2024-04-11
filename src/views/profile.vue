@@ -1,24 +1,34 @@
 <template>
-    <h1>Profile</h1>
-    <div id="subMenu">
-        <div id="innerSubMenu">
-            <div id="pagePath"><router-link to="/">{{ $t('backHome') }}</router-link><span class="side2">&nbsp;</span>Profile</div>
-        </div>
-    </div>
-    <div id="mainContents">
-      <div class="content">
-        <p>帐号：{{ info.username }}</p>
-        <p>昵称：{{ info.realname }}</p>
-        <p>邮箱：{{ info.email }}</p>
+  <h1>Profile</h1>
+  <div id="subMenu">
+      <div id="innerSubMenu">
+          <div id="pagePath"><router-link to="/">{{ $t('backHome') }}</router-link><span class="side2">&nbsp;</span>Profile</div>
       </div>
-    </div>
+  </div>
+  <div id="mainContents">
+      <el-form ref="profileForm" :model="form" :rules="rules" label-width="130px">
+          <el-form-item label="Real Name" prop="realname">
+            <el-input v-model="form.realname" placeholder="Enter Real Name"></el-input>
+          </el-form-item>
+          <el-form-item label="Email" prop="email">
+            <el-input v-model="form.email" placeholder="Enter Email"></el-input>
+          </el-form-item>
+          <el-form-item label="Phone Code" prop="phone_code">
+            <el-input v-model="form.phone_code" placeholder="Enter Phone Code"></el-input>
+          </el-form-item>
+          <el-form-item label="Phone" prop="phone">
+            <el-input v-model="form.phone" placeholder="Enter Phone"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm" :disabled="isDisabled">Submit</el-button>
+          </el-form-item>
+        </el-form>
+  </div>
 </template>
 
 <script setup>
-import useUserStore from '@/store/user'
-import { ref } from 'vue'
+import useProfile from '@/composables/useProfile'
 
-const userStore = useUserStore()
-const info = ref({})
-info.value = userStore.userInfo
+//頁面使用組合函数
+const { profileForm, form, submitForm, rules, isDisabled } = useProfile()
 </script>
