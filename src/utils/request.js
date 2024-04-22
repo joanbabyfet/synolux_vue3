@@ -10,7 +10,7 @@ const instance = axios.create({
 //请求拦截器
 instance.interceptors.request.use(
     config => {
-        //config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('access_token')
+        //config.headers['Authorization'] = 'Bearer ' + localStorage.getItem('token')
 
         // 如果存在，则统一在http请求的header都加上token，这样后台根据token判断你的登录情况，此处token一般是用户完成登录后储存到localstorage里的
         let language = localStorage.getItem('language')

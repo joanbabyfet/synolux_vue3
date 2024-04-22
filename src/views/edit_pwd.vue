@@ -7,14 +7,14 @@
     </div>
     <div id="mainContents">
         <el-form ref="editPwdForm" :model="form" :rules="rules" label-width="150px">
-            <el-form-item label="Old Password" prop="old_password">
-              <el-input type="password" v-model="form.old_password" placeholder="Enter Old Password"></el-input>
+            <el-form-item label="Old Password" prop="password">
+              <el-input type="password" v-model="form.password" placeholder="Enter Old Password"></el-input>
             </el-form-item>
-            <el-form-item label="New Password" prop="password">
-              <el-input type="password" v-model="form.password" placeholder="Enter New Password"></el-input>
+            <el-form-item label="New Password" prop="new_password">
+              <el-input type="password" v-model="form.new_password" placeholder="Enter New Password"></el-input>
             </el-form-item>
-            <el-form-item label="Confirm Password" prop="confirm_password">
-              <el-input type="password" v-model="form.confirm_password" placeholder="Enter Confirm Password"></el-input>
+            <el-form-item label="Confirm Password" prop="re_password">
+              <el-input type="password" v-model="form.re_password" placeholder="Enter Confirm Password"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="submitForm" :disabled="isDisabled">Submit</el-button>

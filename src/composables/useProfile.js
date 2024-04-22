@@ -47,7 +47,7 @@ export default function() {
                         ElMessage.success(res.msg)
                         //重置表单
                         //profileForm.value.resetFields()
-                        //跳转到用户设置页
+                        //跳转到会员中心页
                         router.push('/profile') 
                     }
                     else {

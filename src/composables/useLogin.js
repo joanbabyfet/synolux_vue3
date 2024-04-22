@@ -41,8 +41,8 @@ export default function() {
                     isDisabled.value = false
                     if(res.code === 0) {
                         //保存token与用户信息
-                        //localStorage.setItem('access_token', res.data.access_token)
-                        userStore.setToken(res.data.access_token)
+                        //localStorage.setItem('token', res.data.token)
+                        userStore.setToken(res.data.token)
                         userStore.setUserInfo(res.data)
                         //提示信息
                         ElMessage.success(res.msg)

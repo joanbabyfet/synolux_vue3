@@ -10,7 +10,7 @@
     <div id="mainContents">
         <!-- ? 表示如果后续的属性不存在了 就不获取了 -->
         <h2>{{ info.name }}</h2>
-        {{ info.content }}
+        <div v-html="info.content"></div>
         <div class="files">
             <ul>
                 <li class="iconPDF"></li>

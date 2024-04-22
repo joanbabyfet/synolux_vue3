@@ -2,8 +2,12 @@
 import request from '../utils/request'
 
 //获取新闻列表
+export const getHomeNews = (params, headers) => {
+    return request.get('/v1/home_article', {params: params}, { headers })
+}
+
+//获取新闻列表
 export const getNews = (params, headers) => {
-    console.log(params)
     return request.get('/v1/article', {params: params}, { headers })
 }
 
@@ -22,7 +26,7 @@ export const register = (params, headers) => {
     return request.post('/v1/register', params, { headers })
 }
 
-//用户设置
+//修改用户信息
 export const profile = (params, headers) => {
     return request.post('/v1/profile', params, { headers })
 }
@@ -34,5 +38,5 @@ export const getCaptcha = (params, headers) => {
 
 //修改密码
 export const editPwd = (params, headers) => {
-    return request.post('/v1/edit_pwd', params, { headers })
+    return request.post('/v1/set_password', params, { headers })
 }

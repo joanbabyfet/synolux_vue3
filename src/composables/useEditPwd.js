@@ -9,12 +9,13 @@ export default function() {
     const editPwdForm = ref(null)
     //定义初始化数据
     const form = ref({
-        old_password: '',
-        password: '',
+        password: '', //原始密码
+        new_password: '', //新密码
+        re_password: '', //确认密码
         id: '',
     })
     const equalPassword = (rule, value, callback) => {
-        if(value !== form.value.password) {
+        if(value !== form.value.new_password) {
             callback(new Error('两次输入密码不一致'))
         }
         else {
@@ -23,14 +24,14 @@ export default function() {
     }
     //定义表单验证规则, 文字框用blur(失去焦点), 需要选择的用change(数据改变)
     const rules = {
-        old_password: [
+        password: [
             { required: true, message: 'Enter Old Password', trigger: ['blur']}
         ],
-        password: [
+        new_password: [
             { required: true, message: 'Enter New Password', trigger: ['blur']},
             { min: 6, max: 30, message: '长度在6-20个字符', trigger: ['blur']}
         ],
-        confirm_password: [
+        re_password: [
             { required: true, message: 'Enter Confirm Password', trigger: ['blur']},
             { required: true, validator: equalPassword, trigger: ['blur']}
         ],
