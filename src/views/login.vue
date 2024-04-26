@@ -13,8 +13,8 @@
             <el-form-item label="Password" prop="password">
               <el-input type="password" v-model="form.password" placeholder="Enter Password"></el-input>
             </el-form-item>
-            <el-form-item label="Captcha" prop="captcha">
-              <el-input v-model="form.captcha" placeholder="Enter Captcha" maxlength="4"></el-input>
+            <el-form-item label="Captcha" prop="code">
+              <el-input v-model="form.code" placeholder="Enter Captcha" maxlength="5"></el-input>
               <el-image :src="captchaImageUrl" @click="onChangeCaptcha"></el-image>
             </el-form-item>
             <el-form-item>

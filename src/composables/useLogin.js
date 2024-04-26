@@ -11,7 +11,7 @@ export default function() {
     const form = ref({
         username: '',
         password: '',
-        captcha: '',
+        code: '',
         key: '',
     })
     //定义表单验证规则, 文字框用blur(失去焦点), 需要选择的用change(数据改变)
@@ -23,7 +23,7 @@ export default function() {
             { required: true, message: 'Enter Password', trigger: ['blur']},
             { min: 6, max: 30, message: '长度在6-20个字符', trigger: ['blur']}
         ],
-        captcha: [{ required: true, message: 'Enter Captcha', trigger: ['blur']}],
+        code: [{ required: true, message: 'Enter Captcha', trigger: ['blur']}],
     }
     const isDisabled = ref(false) //禁用按钮避免重复提交
     const captchaImageUrl = ref('')
@@ -77,8 +77,8 @@ export default function() {
     const onChangeCaptcha = () => {
         getCaptcha().then(res => {
             if(res.code === 0) {
-                captchaImageUrl.value = res.data.captcha.img
-                form.value.key = res.data.captcha.key
+                captchaImageUrl.value = res.data.img
+                form.value.key = res.data.key
             }
         }).catch((error)=>{
             ElMessage.error(error)
