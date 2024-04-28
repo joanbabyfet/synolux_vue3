@@ -3,6 +3,7 @@ import { login, getCaptcha } from '../api/index'
 import { ElMessage } from 'element-plus'
 import useUserStore from '../store/user'
 import router from '../router'
+import { Base64 } from 'js-base64'
 
 export default function() {
     //定义表单绑定的ref
@@ -37,6 +38,9 @@ export default function() {
                 const headers = {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
+                //用户密码加密
+                let encode_pwd = Base64.encode(form.value.password)
+                form.value.password = encode_pwd
                 login(form.value, headers).then(res => {
                     isDisabled.value = false
                     if(res.code === 0) {
