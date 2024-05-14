@@ -19,6 +19,17 @@
           <el-form-item label="Phone" prop="phone">
             <el-input v-model="form.phone" placeholder="Enter Phone"></el-input>
           </el-form-item>
+          <el-form-item label="Avatar" prop="avatar">
+            <el-upload
+              ref="upfile"
+              action="#"
+              :auto-upload="false"
+              :multiple="false"
+              :on-change="handleChange">
+              <el-button size="small" type="primary">选择文件</el-button>
+              <img v-if="form.avatar" :src="form.avatar" alt="">
+            </el-upload>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm" :disabled="isDisabled">Submit</el-button>
           </el-form-item>
@@ -30,5 +41,5 @@
 import useProfile from '@/composables/useProfile'
 
 //頁面使用組合函数
-const { profileForm, form, submitForm, rules, isDisabled } = useProfile()
+const { profileForm, form, submitForm, rules, isDisabled, handleChange } = useProfile()
 </script>

@@ -12,6 +12,7 @@
 ## Usage
 ```
 # 执行
+pnpm install
 pnpm run serve
 ```
 ![image](https://raw.githubusercontent.com/joanbabyfet/md_img/master/synolux/synolux.jpg)

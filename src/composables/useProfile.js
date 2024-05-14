@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue'
-import { profile } from '../api/index'
+import { profile, uploadFile } from '../api/index'
 import { ElMessage } from 'element-plus'
 import router from '../router'
 import useUserStore from '../store/user'
@@ -13,6 +13,7 @@ export default function() {
         email: '',
         phone_code: '',
         phone: '',
+        avatar: '',
     })
     //定义表单验证规则, 文字框用blur(失去焦点), 需要选择的用change(数据改变)
     const rules = {
@@ -40,6 +41,7 @@ export default function() {
                 const headers = {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
+                console.log(form.value)
                 profile(form.value, headers).then(res => {
                     isDisabled.value = false
                     if(res.code === 0) {
@@ -65,6 +67,25 @@ export default function() {
         })
     }
 
+    //处理文件上传
+    const handleChange = (file) => {
+        let formData = new FormData()
+        formData.append('filename', file.raw) //使用file.raw解决blob报错
+        formData.append('thumb_w', 200)
+        //上传文件
+        uploadFile(formData).then((res) => {
+          if(res.code === 0) {
+            //console.log(res.data)
+            form.value.avatar = res.data.filename
+            ElMessage.success('上传成功')
+          } else {
+            ElMessage.error('上传失败')
+          }
+        }).catch(error => {
+            console.log(error)
+        })
+      }
+
     onMounted(() => {
         form.value = ref(userStore.userInfo).value
     })
@@ -75,5 +96,6 @@ export default function() {
         submitForm,
         rules,
         isDisabled,
+        handleChange,
     }
 }

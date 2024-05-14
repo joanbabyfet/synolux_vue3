@@ -40,3 +40,8 @@ export const getCaptcha = (params, headers) => {
 export const editPwd = (params, headers) => {
     return request.post('/v1/set_password', params, { headers })
 }
+
+//上传文件
+export const uploadFile = (params, headers) => {
+    return request.post('/v1/upload', params, { headers })
+}
